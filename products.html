@@ -2,17 +2,22 @@
 layout: default
 title: Products
 ---
-<h1>Eudoxys&#8480; {{ page.title }}</h1>
 
-<ul>
-  {% for post in site.posts %}
-    {% if page.title == post.category %}
-    <li>
-      <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
-      {% assign date = post.date | date: "%Y-%m-%d" %}
-      <nobr>{% assign excerpt = post.excerpt | append: " (Posted "  | append: date | append: ")" %}
-      {{ excerpt }}</nobr>
-    </li>
-    {% endif %}
-  {% endfor %}
-</ul>
+<div class="page-header">
+  <h1>Eudoxys&#8480; Products</h1>
+  <p>Software products for power system modeling, simulation, and data analysis.</p>
+</div>
+
+<div class="page-content">
+  <ul class="post-list">
+    {% for post in site.posts %}
+      {% if post.category == "Products" %}
+      <li class="post-list-item">
+        <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
+        <span class="post-date">{{ post.date | date: "%B %d, %Y" }}</span>
+        <p class="post-excerpt">{{ post.excerpt | strip_html | truncate: 200 }}</p>
+      </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+</div>

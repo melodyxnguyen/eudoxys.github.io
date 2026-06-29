@@ -1,0 +1,134 @@
+---
+layout: default
+title: Welcome
+permalink: /
+---
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-content">
+    <h1>Making sense of our energy future</h1>
+    <p class="hero-subtitle">Eudoxys Sciences LLC is an independent consulting group providing models and simulations to help the electric power industry plan for an increasingly uncertain and unpredictable future.</p>
+    <div class="hero-actions">
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSfFTSw6FNu5hPFrv3ZSZTXRx0zniyAALJIRvbfamTEo_cjPHw/viewform" class="btn btn-primary">Get a Quote</a>
+      <a href="/about/" class="btn btn-secondary">Learn More</a>
+    </div>
+  </div>
+</section>
+
+<!-- What We Do -->
+<section class="section">
+  <div class="section-inner">
+    <h2 class="section-title">What We Do</h2>
+    <p class="section-subtitle">We serve electric utilities, regulators, reliability organizations, and government agencies with physics-based and data-driven modeling.</p>
+
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-img"><img src="/images/placeholder-modeling.svg" alt="Modeling"></div>
+        <h3>Modeling</h3>
+        <p>High-fidelity load models for GridLAB-D, CYME, PSLF, and PSS/E using physics-based models, end-use surveys, and measured data.</p>
+      </div>
+      <div class="card">
+        <div class="card-img"><img src="/images/placeholder-simulations.svg" alt="Simulations"></div>
+        <h3>Simulations</h3>
+        <p>GridLAB-D transmission and distribution simulations validated against AMI and SCADA data, run on optimized AWS infrastructure.</p>
+      </div>
+      <div class="card">
+        <div class="card-img"><img src="/images/placeholder-analysis.svg" alt="Analysis"></div>
+        <h3>Analysis</h3>
+        <p>System reliability, resilience, tariff design, electrification impacts, conservation voltage reduction, and optimal power flow.</p>
+      </div>
+      <div class="card">
+        <div class="card-img"><img src="/images/placeholder-forecasting.svg" alt="Forecasting"></div>
+        <h3>Forecasting</h3>
+        <p>Short-term and long-term load forecasts for all major electric customer sectors, from local to national scale.</p>
+      </div>
+      <div class="card">
+        <div class="card-img"><img src="/images/placeholder-controls.svg" alt="Controls"></div>
+        <h3>Controls</h3>
+        <p>Advanced load and distributed resource control strategies, with a focus on transactive energy and optimal dispatch.</p>
+      </div>
+      <div class="card">
+        <div class="card-img"><img src="/images/placeholder-training.svg" alt="Training"></div>
+        <h3>Training</h3>
+        <p>Courses for utility engineers, academics, and regulators covering GridLAB-D modeling, simulation, and LF Energy tools.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Services / Products / Tools -->
+<section class="section section-alt">
+  <div class="section-inner">
+    <h2 class="section-title">Explore</h2>
+    <p class="section-subtitle">Browse our consulting services, software products, and open-source tools.</p>
+
+    <div class="card-grid card-grid-3">
+      <a href="/services/" class="feature-card">
+        <div class="feature-card-header services-header">
+          <img src="/images/placeholder-services.svg" alt="Services" class="feature-img">
+        </div>
+        <div class="feature-card-body">
+          <h3>Services</h3>
+          <p>Consulting engagements for grid modeling, simulation, analysis, forecasting, and training.</p>
+          <span class="card-link">View Services &rarr;</span>
+        </div>
+      </a>
+
+      <a href="/products/" class="feature-card">
+        <div class="feature-card-header products-header">
+          <img src="/images/placeholder-products.svg" alt="Products" class="feature-img">
+        </div>
+        <div class="feature-card-body">
+          <h3>Products</h3>
+          <p>Software products for power system modeling, simulation, and data analysis.</p>
+          <span class="card-link">View Products &rarr;</span>
+        </div>
+      </a>
+
+      <a href="/tools/" class="feature-card">
+        <div class="feature-card-header tools-header">
+          <img src="/images/placeholder-tools.svg" alt="Tools" class="feature-img">
+        </div>
+        <div class="feature-card-body">
+          <h3>Tools</h3>
+          <p>Open-source utilities and data accessors for energy data, geohashing, and load analysis.</p>
+          <span class="card-link">View Tools &rarr;</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Latest News -->
+<section class="section">
+  <div class="section-inner">
+    <h2 class="section-title">Latest Publications</h2>
+    <p class="section-subtitle">Recent news, talks, and publications from Eudoxys.</p>
+
+    <div class="card-grid card-grid-2">
+      {% assign news_posts = site.posts | where: "category", "News" %}
+      {% for post in news_posts limit:4 %}
+      <a href="{{ post.url }}" class="news-card">
+        <span class="news-date">{{ post.date | date: "%B %d, %Y" }}</span>
+        <h3>{{ post.title }}</h3>
+        <p>{{ post.excerpt | strip_html | truncate: 120 }}</p>
+        <span class="card-link">Read more &rarr;</span>
+      </a>
+      {% endfor %}
+    </div>
+
+    <div class="section-action">
+      <a href="/news/" class="btn btn-secondary">All Publications</a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section cta-section">
+  <div class="section-inner" style="text-align: center;">
+    <h2>Ready to get started?</h2>
+    <p class="section-subtitle">Contact us for a consultation on your grid modeling and simulation needs.</p>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfFTSw6FNu5hPFrv3ZSZTXRx0zniyAALJIRvbfamTEo_cjPHw/viewform" class="btn btn-primary btn-large">Request a Quote</a>
+  </div>
+</section>
