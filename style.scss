@@ -307,6 +307,361 @@ img { max-width: 100%; height: auto; }
   line-height: 1.55;
 }
 
+// Hero label & sub
+.hero-label {
+  display: block;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 1.25rem;
+}
+
+.hero-sub {
+  margin-top: 1.25rem;
+  font-size: 1rem;
+  color: rgba(255,255,255,0.65);
+  letter-spacing: 0.02em;
+}
+
+// Section header (heading left, link right)
+.section-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 2.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid $border;
+
+  h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  @include mobile {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+}
+
+.btn-outline {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: $text;
+  border: 1.5px solid $text;
+  padding: 0.5rem 1.1rem;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+
+  &:hover {
+    background: $text;
+    color: $white;
+    text-decoration: none;
+  }
+}
+
+.btn-outline-dark {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: $white;
+  border: 1.5px solid rgba(255,255,255,0.5);
+  padding: 0.5rem 1.1rem;
+  text-decoration: none;
+  transition: background 0.2s, border-color 0.2s;
+
+  &:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: $white;
+    text-decoration: none;
+  }
+}
+
+// News slideshow
+.news-section {
+  background: #111;
+  color: $white;
+  padding: 5rem 3rem;
+
+  .section-header {
+    border-bottom-color: rgba(255,255,255,0.15);
+    h2 { color: $white; }
+  }
+
+  @include mobile {
+    padding: 3rem 1.5rem;
+  }
+}
+
+.slideshow {
+  position: relative;
+  overflow: hidden;
+}
+
+.slideshow-track {
+  position: relative;
+  min-height: 420px;
+}
+
+.slide {
+  display: none;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+  animation: fadein 0.4s ease;
+
+  &.active { display: grid; }
+
+  @include mobile {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+@keyframes fadein {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.slide-img {
+  border-radius: 8px;
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+  background: #222;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+}
+
+.slide-body {
+  .slide-date {
+    display: block;
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 0.75rem;
+  }
+
+  h3 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    line-height: 1.3;
+    color: $white;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    color: rgba(255,255,255,0.65);
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+
+  .btn-learn {
+    border-color: rgba(255,255,255,0.5);
+    color: $white;
+
+    &:hover {
+      background: $white;
+      color: $text;
+      border-color: $white;
+    }
+  }
+}
+
+.slideshow-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  margin-top: 2.5rem;
+}
+
+.ss-prev, .ss-next {
+  background: none;
+  border: 1.5px solid rgba(255,255,255,0.4);
+  color: $white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.2s, background 0.2s;
+
+  &:hover {
+    border-color: $white;
+    background: rgba(255,255,255,0.1);
+  }
+}
+
+.ss-dots {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.ss-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255,255,255,0.25);
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.2s, transform 0.2s;
+
+  &.active {
+    background: $white;
+    transform: scale(1.3);
+  }
+}
+
+// Tools carousel
+.tools-section {
+  background: $bg-alt;
+  padding: 5rem 3rem;
+
+  @include mobile {
+    padding: 3rem 1.5rem;
+  }
+}
+
+.carousel {
+  overflow: hidden;
+  position: relative;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 1.5rem;
+  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+  // Each page shows 3 cards; each card = (100% - gaps) / 3
+  // We set the track width to accommodate all pages
+}
+
+.carousel-card {
+  flex: 0 0 calc((100% - 3rem) / 3);
+  background: $white;
+  border: 1px solid $border;
+  border-radius: 10px;
+  overflow: hidden;
+  text-decoration: none;
+  color: $text;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.2s, transform 0.2s;
+
+  &:hover {
+    box-shadow: 0 6px 24px rgba(0,0,0,0.1);
+    transform: translateY(-3px);
+    text-decoration: none;
+  }
+
+  h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    padding: 1rem 1.25rem 0.4rem;
+    line-height: 1.3;
+  }
+
+  p {
+    font-size: 0.88rem;
+    color: $text-secondary;
+    padding: 0 1.25rem;
+    line-height: 1.55;
+    flex: 1;
+  }
+
+  .card-arrow {
+    display: block;
+    padding: 0.75rem 1.25rem 1rem;
+    font-size: 1rem;
+    color: $primary;
+    font-weight: 600;
+  }
+
+  @include mobile {
+    flex: 0 0 85%;
+  }
+}
+
+.carousel-card-img {
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #e5e7eb;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+}
+
+.carousel-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  margin-top: 2rem;
+}
+
+.cr-prev, .cr-next {
+  background: none;
+  border: 1.5px solid $border;
+  color: $text;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.2s, background 0.2s;
+
+  &:hover {
+    border-color: $text;
+    background: $bg;
+  }
+}
+
+.cr-dots {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.cr-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: $border;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.2s, transform 0.2s;
+
+  &.active {
+    background: $text;
+    transform: scale(1.3);
+  }
+}
+
 // Intro block
 .intro-block {
   background: $bg-alt;

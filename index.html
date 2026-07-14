@@ -8,9 +8,10 @@ permalink: /
 <section class="hero">
   <div class="hero-overlay"></div>
   <div class="hero-content">
+    <span class="hero-label">Energy Consulting</span>
     <h1>Making sense of our energy future</h1>
-    <p>Independent consulting for the electric power industry</p>
     <a href="#services" class="btn-hero">Explore Our Work</a>
+    <p class="hero-sub">Independent consulting for the electric power industry</p>
   </div>
 </section>
 
@@ -93,7 +94,74 @@ permalink: /
 
 </div>
 
-<!-- Minimal category cards -->
+<!-- News slideshow -->
+<section class="news-section">
+  <div class="section-header">
+    <h2>Latest Publications</h2>
+    <a href="/news/" class="btn-outline">Explore All &rarr;</a>
+  </div>
+
+  <div class="slideshow" id="news-slideshow">
+    <div class="slideshow-track">
+      {% assign news_posts = site.posts | where: "category", "News" %}
+      {% for post in news_posts %}
+      <div class="slide">
+        <div class="slide-img">
+          <img src="/images/placeholder-publications.svg" alt="{{ post.title }}">
+        </div>
+        <div class="slide-body">
+          <span class="slide-date">{{ post.date | date: "%B %Y" }}</span>
+          <h3>{{ post.title }}</h3>
+          <p>{{ post.excerpt | strip_html | truncate: 140 }}</p>
+          <a href="{{ post.url }}" class="btn-learn">Read More</a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="slideshow-controls">
+      <button class="ss-prev" aria-label="Previous">&#8592;</button>
+      <div class="ss-dots">
+        {% for post in news_posts %}
+        <button class="ss-dot{% if forloop.first %} active{% endif %}" aria-label="Slide {{ forloop.index }}"></button>
+        {% endfor %}
+      </div>
+      <button class="ss-next" aria-label="Next">&#8594;</button>
+    </div>
+  </div>
+</section>
+
+<!-- Tools carousel -->
+<section class="tools-section">
+  <div class="section-header">
+    <h2>Tools</h2>
+    <a href="/tools/" class="btn-outline-dark">View All &rarr;</a>
+  </div>
+
+  <div class="carousel" id="tools-carousel">
+    <div class="carousel-track">
+      {% assign tools_posts = site.posts | where: "category", "Tools" %}
+      {% for post in tools_posts %}
+      <a href="{{ post.url }}" class="carousel-card">
+        <div class="carousel-card-img">
+          <img src="/images/placeholder-tools.svg" alt="{{ post.title }}">
+        </div>
+        <h3>{{ post.title }}</h3>
+        <p>{{ post.excerpt | strip_html | truncate: 90 }}</p>
+        <span class="card-arrow">&rarr;</span>
+      </a>
+      {% endfor %}
+    </div>
+
+    <div class="carousel-controls">
+      <button class="cr-prev" aria-label="Previous">&#8592;</button>
+      <div class="cr-dots"></div>
+      <button class="cr-next" aria-label="Next">&#8594;</button>
+    </div>
+  </div>
+</section>
+
+<!-- Category cards -->
 <section class="categories">
   <a href="/services/" class="cat-card">
     <div class="cat-img">
@@ -102,7 +170,6 @@ permalink: /
     <h2>Services</h2>
     <p>Grid modeling, simulation, analysis, and forecasting for utilities and regulators.</p>
   </a>
-
   <a href="/products/" class="cat-card">
     <div class="cat-img">
       <img src="/images/placeholder-products.svg" alt="Products">
@@ -110,7 +177,6 @@ permalink: /
     <h2>Products</h2>
     <p>Software for power system modeling, simulation, and data analysis.</p>
   </a>
-
   <a href="/tools/" class="cat-card">
     <div class="cat-img">
       <img src="/images/placeholder-tools.svg" alt="Tools">
@@ -118,7 +184,6 @@ permalink: /
     <h2>Tools</h2>
     <p>Open-source utilities and data accessors for energy research.</p>
   </a>
-
   <a href="/news/" class="cat-card">
     <div class="cat-img">
       <img src="/images/placeholder-publications.svg" alt="Publications">
@@ -127,3 +192,65 @@ permalink: /
     <p>Research, talks, and news from Eudoxys Sciences.</p>
   </a>
 </section>
+
+<script>
+// News slideshow
+(function() {
+  var slides = document.querySelectorAll('#news-slideshow .slide');
+  var dots = document.querySelectorAll('#news-slideshow .ss-dot');
+  var current = 0;
+
+  function show(n) {
+    slides[current].classList.remove('active');
+    dots[current].classList.remove('active');
+    current = (n + slides.length) % slides.length;
+    slides[current].classList.add('active');
+    dots[current].classList.add('active');
+  }
+
+  slides[0].classList.add('active');
+
+  document.querySelector('#news-slideshow .ss-prev').addEventListener('click', function() { show(current - 1); });
+  document.querySelector('#news-slideshow .ss-next').addEventListener('click', function() { show(current + 1); });
+  dots.forEach(function(dot, i) { dot.addEventListener('click', function() { show(i); }); });
+
+  // Auto-advance every 5 seconds
+  setInterval(function() { show(current + 1); }, 5000);
+})();
+
+// Tools carousel — 3 visible at a time, auto-advances
+(function() {
+  var track = document.querySelector('#tools-carousel .carousel-track');
+  var cards = track.querySelectorAll('.carousel-card');
+  var dotsContainer = document.querySelector('#tools-carousel .cr-dots');
+  var visible = 3;
+  var total = cards.length;
+  var pages = Math.ceil(total / visible);
+  var page = 0;
+  var timer;
+
+  // Build dots
+  for (var i = 0; i < pages; i++) {
+    var d = document.createElement('button');
+    d.className = 'cr-dot' + (i === 0 ? ' active' : '');
+    d.setAttribute('aria-label', 'Page ' + (i + 1));
+    dotsContainer.appendChild(d);
+  }
+  var dots = dotsContainer.querySelectorAll('.cr-dot');
+
+  function goTo(n) {
+    page = (n + pages) % pages;
+    track.style.transform = 'translateX(-' + (page * 100) + '%)';
+    dots.forEach(function(d, i) { d.classList.toggle('active', i === page); });
+  }
+
+  function startTimer() { timer = setInterval(function() { goTo(page + 1); }, 4000); }
+  function resetTimer() { clearInterval(timer); startTimer(); }
+
+  document.querySelector('#tools-carousel .cr-prev').addEventListener('click', function() { goTo(page - 1); resetTimer(); });
+  document.querySelector('#tools-carousel .cr-next').addEventListener('click', function() { goTo(page + 1); resetTimer(); });
+  dots.forEach(function(d, i) { d.addEventListener('click', function() { goTo(i); resetTimer(); }); });
+
+  startTimer();
+})();
+</script>
