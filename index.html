@@ -23,72 +23,81 @@ permalink: /
   </div>
 </div>
 
-<!-- Alternating service rows -->
+<!-- Sticky scroll service pairs -->
 <div class="services-list" id="services">
 
-  <div class="service-row">
-    <div class="service-img">
-      <img src="/images/placeholder-modeling.svg" alt="Modeling">
+  <!-- Pair 1: Modeling + Simulations — image sticks LEFT -->
+  <div class="sticky-pair">
+    <div class="sticky-col">
+      <div class="sticky-img">
+        <img src="/images/placeholder-modeling.svg" alt="Modeling and Simulations">
+      </div>
     </div>
-    <div class="service-text">
-      <h2>Modeling</h2>
-      <p>We develop high-fidelity static, quasi-steady, and dynamic load models for GridLAB-D, CYME, PSLF, and PSS/E — built from physics-based models, end-use surveys, and measured power data.</p>
-      <a href="/services/" class="btn-learn">Learn More</a>
-    </div>
-  </div>
-
-  <div class="service-row service-row--reverse">
-    <div class="service-img">
-      <img src="/images/placeholder-simulations.svg" alt="Simulations">
-    </div>
-    <div class="service-text">
-      <h2>Simulations</h2>
-      <p>We prepare and validate GridLAB-D transmission and distribution simulations of all sizes, run on optimized AWS infrastructure and validated against AMI and SCADA data.</p>
-      <a href="/services/" class="btn-learn">Learn More</a>
-    </div>
-  </div>
-
-  <div class="service-row">
-    <div class="service-img">
-      <img src="/images/placeholder-analysis.svg" alt="Analysis">
-    </div>
-    <div class="service-text">
-      <h2>Analysis</h2>
-      <p>We conduct reliability and resilience analysis including IEEE 1366 metrics, electrification impact studies, conservation voltage reduction, and distribution-level optimal power flow.</p>
-      <a href="/services/" class="btn-learn">Learn More</a>
+    <div class="scroll-col">
+      <div class="scroll-block">
+        <div class="scroll-block-inner">
+          <h2>Modeling</h2>
+          <p>We develop high-fidelity static, quasi-steady, and dynamic load models for GridLAB-D, CYME, PSLF, and PSS/E — built from physics-based models, end-use surveys, and measured power data.</p>
+          <a href="/services/" class="btn-learn">Learn More</a>
+        </div>
+      </div>
+      <div class="scroll-block">
+        <div class="scroll-block-inner">
+          <h2>Simulations</h2>
+          <p>We prepare and validate GridLAB-D transmission and distribution simulations of all sizes, run on optimized AWS infrastructure and validated against AMI and SCADA data.</p>
+          <a href="/services/" class="btn-learn">Learn More</a>
+        </div>
+      </div>
     </div>
   </div>
 
-  <div class="service-row service-row--reverse">
-    <div class="service-img">
-      <img src="/images/placeholder-forecasting.svg" alt="Forecasting">
+  <!-- Pair 2: Analysis + Forecasting — image sticks RIGHT -->
+  <div class="sticky-pair sticky-pair--reverse">
+    <div class="scroll-col">
+      <div class="scroll-block">
+        <div class="scroll-block-inner">
+          <h2>Analysis</h2>
+          <p>We conduct reliability and resilience analysis including IEEE 1366 metrics, electrification impact studies, conservation voltage reduction, and distribution-level optimal power flow.</p>
+          <a href="/services/" class="btn-learn">Learn More</a>
+        </div>
+      </div>
+      <div class="scroll-block">
+        <div class="scroll-block-inner">
+          <h2>Forecasting</h2>
+          <p>We develop short-term (1 hour to 1 week) and long-term (5–20 year) load forecasts for all major electric customer sectors from local to national scale.</p>
+          <a href="/services/" class="btn-learn">Learn More</a>
+        </div>
+      </div>
     </div>
-    <div class="service-text">
-      <h2>Forecasting</h2>
-      <p>We develop short-term (1 hour to 1 week) and long-term (5–20 year) load forecasts for all major electric customer sectors from local to national scale.</p>
-      <a href="/services/" class="btn-learn">Learn More</a>
+    <div class="sticky-col">
+      <div class="sticky-img">
+        <img src="/images/placeholder-analysis.svg" alt="Analysis and Forecasting">
+      </div>
     </div>
   </div>
 
-  <div class="service-row">
-    <div class="service-img">
-      <img src="/images/placeholder-controls.svg" alt="Controls">
+  <!-- Pair 3: Controls + Training — image sticks LEFT -->
+  <div class="sticky-pair">
+    <div class="sticky-col">
+      <div class="sticky-img">
+        <img src="/images/placeholder-controls.svg" alt="Controls and Training">
+      </div>
     </div>
-    <div class="service-text">
-      <h2>Controls</h2>
-      <p>We develop and validate advanced load and distributed resource control strategies, with a focus on transactive energy solutions that use price signals to optimally dispatch distributed resources.</p>
-      <a href="/services/" class="btn-learn">Learn More</a>
-    </div>
-  </div>
-
-  <div class="service-row service-row--reverse">
-    <div class="service-img">
-      <img src="/images/placeholder-training.svg" alt="Training">
-    </div>
-    <div class="service-text">
-      <h2>Training</h2>
-      <p>We provide two-hour training courses for utility engineers, academic faculty, and regulatory staff covering GridLAB-D modeling, simulation, Python APIs, and LF Energy tools.</p>
-      <a href="/services/" class="btn-learn">Learn More</a>
+    <div class="scroll-col">
+      <div class="scroll-block">
+        <div class="scroll-block-inner">
+          <h2>Controls</h2>
+          <p>We develop and validate advanced load and distributed resource control strategies, with a focus on transactive energy solutions that use price signals to optimally dispatch distributed resources.</p>
+          <a href="/services/" class="btn-learn">Learn More</a>
+        </div>
+      </div>
+      <div class="scroll-block">
+        <div class="scroll-block-inner">
+          <h2>Training</h2>
+          <p>We provide two-hour training courses for utility engineers, academic faculty, and regulatory staff covering GridLAB-D modeling, simulation, Python APIs, and LF Energy tools.</p>
+          <a href="/services/" class="btn-learn">Learn More</a>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -161,37 +170,6 @@ permalink: /
   </div>
 </section>
 
-<!-- Category cards -->
-<section class="categories">
-  <a href="/services/" class="cat-card">
-    <div class="cat-img">
-      <img src="/images/placeholder-services.svg" alt="Services">
-    </div>
-    <h2>Services</h2>
-    <p>Grid modeling, simulation, analysis, and forecasting for utilities and regulators.</p>
-  </a>
-  <a href="/products/" class="cat-card">
-    <div class="cat-img">
-      <img src="/images/placeholder-products.svg" alt="Products">
-    </div>
-    <h2>Products</h2>
-    <p>Software for power system modeling, simulation, and data analysis.</p>
-  </a>
-  <a href="/tools/" class="cat-card">
-    <div class="cat-img">
-      <img src="/images/placeholder-tools.svg" alt="Tools">
-    </div>
-    <h2>Tools</h2>
-    <p>Open-source utilities and data accessors for energy research.</p>
-  </a>
-  <a href="/news/" class="cat-card">
-    <div class="cat-img">
-      <img src="/images/placeholder-publications.svg" alt="Publications">
-    </div>
-    <h2>Publications</h2>
-    <p>Research, talks, and news from Eudoxys Sciences.</p>
-  </a>
-</section>
 
 <script>
 // News slideshow

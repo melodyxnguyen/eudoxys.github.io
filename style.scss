@@ -692,45 +692,52 @@ img { max-width: 100%; height: auto; }
   }
 }
 
-// Alternating service rows
+// Sticky scroll service pairs
 .services-list {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 4rem 2rem;
+  padding: 0 2rem;
 
   @include mobile {
-    padding: 2rem 1.5rem;
+    padding: 0 1.5rem;
   }
 }
 
-.service-row {
-  display: flex;
-  align-items: center;
-  gap: 4rem;
-  padding: 3.5rem 0;
+.sticky-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: start;
   border-bottom: 1px solid $border;
 
-  &:last-child {
-    border-bottom: none;
-  }
-
-  &.service-row--reverse {
-    flex-direction: row-reverse;
-  }
+  &:last-child { border-bottom: none; }
 
   @include mobile {
-    flex-direction: column !important;
-    gap: 1.5rem;
-    padding: 2.5rem 0;
+    grid-template-columns: 1fr;
+    gap: 0;
   }
 }
 
-.service-img {
-  flex: 1;
+.sticky-col {
+  position: sticky;
+  top: 64px;
+  height: calc(100vh - 64px);
+  display: flex;
+  align-items: center;
+
+  @include mobile {
+    position: static;
+    height: auto;
+    padding: 2rem 0 0;
+  }
+}
+
+.sticky-img {
+  width: 100%;
   border-radius: 10px;
   overflow: hidden;
-  background: $bg-alt;
   aspect-ratio: 4 / 3;
+  background: $bg-alt;
 
   img {
     width: 100%;
@@ -740,8 +747,26 @@ img { max-width: 100%; height: auto; }
   }
 }
 
-.service-text {
-  flex: 1;
+.scroll-col {
+  // natural flow — text scrolls while image stays fixed
+}
+
+.scroll-block {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid $border;
+
+  &:last-child { border-bottom: none; }
+
+  @include mobile {
+    min-height: auto;
+    padding: 3rem 0;
+  }
+}
+
+.scroll-block-inner {
+  padding: 2rem 0;
 
   h2 {
     font-size: 1.75rem;
