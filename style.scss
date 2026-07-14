@@ -985,6 +985,88 @@ img { max-width: 100%; height: auto; }
   }
 }
 
+// People section on About page
+.people-section {
+  background: $bg-alt;
+  border-top: 1px solid $border;
+  padding: 5rem 2rem;
+
+  @include mobile {
+    padding: 3rem 1.5rem;
+  }
+}
+
+.people-inner {
+  max-width: 900px;
+  margin: 0 auto;
+
+  h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 3rem;
+    letter-spacing: -0.01em;
+  }
+}
+
+.person-card {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 3rem;
+  align-items: start;
+
+  @include mobile {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+.person-photo {
+  img {
+    width: 100%;
+    border-radius: 10px;
+    display: block;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    object-position: top;
+  }
+}
+
+.person-bio {
+  h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  h1, h2 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-top: 1.75rem;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid $border;
+    padding-bottom: 0.25rem;
+  }
+
+  p {
+    font-size: 0.95rem;
+    color: $text-secondary;
+    line-height: 1.7;
+    margin-bottom: 0.75rem;
+  }
+
+  ul, ol {
+    padding-left: 1.25rem;
+    margin-bottom: 0.75rem;
+
+    li {
+      font-size: 0.9rem;
+      color: $text-secondary;
+      line-height: 1.6;
+      margin-bottom: 0.25rem;
+    }
+  }
+}
+
 // Post list (for category pages)
 .post-list {
   list-style: none;
