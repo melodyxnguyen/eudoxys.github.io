@@ -1,12 +1,14 @@
-- name: Services
-  link: /services/
-- name: Products
-  link: /products/
-- name: Tools
-  link: /tools/
-- name: Publications
+- name: Welcome
+  link: /
+- name: News
   link: /news/
 - name: People
   link: /people/
+- name: Products
+  link: /products/
+- name: Services
+  link: /services/
+- name: Tools
+  link: /tools/
 - name: About
   link: /about/

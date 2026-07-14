@@ -35,7 +35,7 @@ html {
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-family: Georgia, "Times New Roman", Times, serif;
   color: $text;
   background: $bg;
   line-height: 1.6;
@@ -86,6 +86,7 @@ img { max-width: 100%; height: auto; }
   font-weight: 700;
   color: $text;
   letter-spacing: -0.01em;
+  font-family: Papyrus, fantasy;
 }
 
 .nav-toggle {
@@ -120,6 +121,7 @@ img { max-width: 100%; height: auto; }
     color: $text-secondary;
     font-size: 0.9rem;
     font-weight: 500;
+    font-family: Georgia, serif;
     border-radius: 6px;
     transition: color 0.15s, background 0.15s;
     text-decoration: none;
@@ -172,73 +174,265 @@ img { max-width: 100%; height: auto; }
   }
 }
 
-// Hero
+// Hero — full viewport with background image
 .hero {
-  background: linear-gradient(135deg, #f0f5ff 0%, #e8effc 50%, #f5f3ff 100%);
-  padding: 6rem 2rem;
+  position: relative;
+  height: 100vh;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url('/images/washington.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 
   @include mobile {
-    padding: 3rem 1.5rem;
+    min-height: 480px;
   }
 }
 
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+}
+
 .hero-content {
-  max-width: 800px;
-  margin: 0 auto;
+  position: relative;
+  z-index: 1;
   text-align: center;
+  padding: 2rem;
+  max-width: 760px;
 
   h1 {
-    font-size: 3rem;
-    font-weight: 800;
+    font-size: 3.5rem;
+    font-weight: 700;
     line-height: 1.15;
     letter-spacing: -0.02em;
-    color: $text;
-    margin-bottom: 1.5rem;
+    color: $white;
+    margin-bottom: 1rem;
 
     @include mobile {
-      font-size: 2rem;
+      font-size: 2.25rem;
+    }
+  }
+
+  p {
+    font-size: 1.15rem;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 2rem;
+    letter-spacing: 0.02em;
+
+    @include mobile {
+      font-size: 1rem;
     }
   }
 }
 
-.hero-subtitle {
-  font-size: 1.2rem;
-  color: $text-secondary;
-  line-height: 1.7;
-  max-width: 640px;
-  margin: 0 auto 2rem;
+.btn-hero {
+  display: inline-block;
+  padding: 0.9rem 2.5rem;
+  border: 2px solid $white;
+  color: $white;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
 
-  @include mobile {
-    font-size: 1rem;
+  &:hover {
+    background: $white;
+    color: $text;
+    text-decoration: none;
   }
 }
 
-.hero-actions {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  flex-wrap: wrap;
+// Category cards — minimal grid below hero
+.categories {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+
+  @include mobile {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
-// Buttons
+.cat-card {
+  display: block;
+  text-decoration: none;
+  color: $text;
+  overflow: hidden;
+  position: relative;
+
+  &:hover {
+    text-decoration: none;
+
+    .cat-img img {
+      transform: scale(1.04);
+    }
+
+    h2 { color: $primary; }
+  }
+}
+
+.cat-img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: $bg-alt;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+}
+
+.cat-card h2 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: 1.25rem 1.25rem 0.35rem;
+  transition: color 0.2s;
+  letter-spacing: -0.01em;
+}
+
+.cat-card p {
+  font-size: 0.88rem;
+  color: $text-secondary;
+  padding: 0 1.25rem 1.5rem;
+  line-height: 1.55;
+}
+
+// Intro block
+.intro-block {
+  background: $bg-alt;
+  border-bottom: 1px solid $border;
+  padding: 4rem 2rem;
+
+  @include mobile {
+    padding: 2.5rem 1.5rem;
+  }
+}
+
+.intro-inner {
+  max-width: 780px;
+  margin: 0 auto;
+  text-align: center;
+
+  h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    letter-spacing: -0.01em;
+  }
+
+  p {
+    font-size: 1.05rem;
+    color: $text-secondary;
+    line-height: 1.75;
+  }
+}
+
+// Alternating service rows
+.services-list {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+
+  @include mobile {
+    padding: 2rem 1.5rem;
+  }
+}
+
+.service-row {
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+  padding: 3.5rem 0;
+  border-bottom: 1px solid $border;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &.service-row--reverse {
+    flex-direction: row-reverse;
+  }
+
+  @include mobile {
+    flex-direction: column !important;
+    gap: 1.5rem;
+    padding: 2.5rem 0;
+  }
+}
+
+.service-img {
+  flex: 1;
+  border-radius: 10px;
+  overflow: hidden;
+  background: $bg-alt;
+  aspect-ratio: 4 / 3;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+}
+
+.service-text {
+  flex: 1;
+
+  h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    letter-spacing: -0.01em;
+  }
+
+  p {
+    font-size: 1rem;
+    color: $text-secondary;
+    line-height: 1.75;
+    margin-bottom: 1.75rem;
+  }
+}
+
+.btn-learn {
+  display: inline-block;
+  padding: 0.65rem 1.5rem;
+  border: 1.5px solid $text;
+  color: $text;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+
+  &:hover {
+    background: $text;
+    color: $white;
+    text-decoration: none;
+  }
+}
+
+// Utility button (kept for sub-pages)
 .btn {
   display: inline-flex;
   align-items: center;
   padding: 0.75rem 1.5rem;
-  border-radius: 8px;
+  border-radius: 6px;
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 0.95rem;
   transition: all 0.15s;
   text-decoration: none;
 
   &:hover { text-decoration: none; }
-}
-
-.btn-primary {
-  background: $primary;
-  color: $white;
-
-  &:hover { background: $primary-dark; }
 }
 
 .btn-secondary {
@@ -249,243 +443,6 @@ img { max-width: 100%; height: auto; }
   &:hover {
     border-color: darken($border, 10%);
     background: $bg-alt;
-  }
-}
-
-.btn-large {
-  padding: 1rem 2rem;
-  font-size: 1.1rem;
-}
-
-// Sections
-.section {
-  padding: 5rem 2rem;
-
-  @include mobile {
-    padding: 3rem 1.5rem;
-  }
-}
-
-.section-alt {
-  background: $bg-alt;
-}
-
-.section-inner {
-  max-width: 1100px;
-  margin: 0 auto;
-}
-
-.section-title {
-  font-size: 2rem;
-  font-weight: 700;
-  text-align: center;
-  margin-bottom: 0.75rem;
-  letter-spacing: -0.01em;
-}
-
-.section-subtitle {
-  text-align: center;
-  color: $text-secondary;
-  font-size: 1.1rem;
-  max-width: 600px;
-  margin: 0 auto 3rem;
-}
-
-.section-action {
-  text-align: center;
-  margin-top: 2.5rem;
-}
-
-// Card Grid
-.card-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-
-  @include mobile {
-    grid-template-columns: 1fr;
-  }
-}
-
-.card-grid-2 {
-  grid-template-columns: repeat(2, 1fr);
-
-  @include mobile {
-    grid-template-columns: 1fr;
-  }
-}
-
-.card-grid-3 {
-  grid-template-columns: repeat(3, 1fr);
-
-  @include mobile {
-    grid-template-columns: 1fr;
-  }
-}
-
-// Basic Cards (What We Do)
-.card {
-  background: $white;
-  border: 1px solid $border;
-  border-radius: 12px;
-  padding: 2rem;
-  transition: box-shadow 0.2s, transform 0.2s;
-
-  &:hover {
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
-    transform: translateY(-2px);
-  }
-
-  h3 {
-    font-size: 1.15rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-  }
-
-  p {
-    color: $text-secondary;
-    font-size: 0.95rem;
-    line-height: 1.6;
-  }
-}
-
-.card-img {
-  width: 100%;
-  height: 120px;
-  margin-bottom: 1rem;
-  border-radius: 8px;
-  overflow: hidden;
-  background: #e5e7eb;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-}
-
-// Feature Cards (Services / Products / Tools)
-.feature-card {
-  display: block;
-  background: $white;
-  border: 1px solid $border;
-  border-radius: 12px;
-  overflow: hidden;
-  transition: box-shadow 0.2s, transform 0.2s;
-  text-decoration: none;
-  color: $text;
-
-  &:hover {
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-    transform: translateY(-3px);
-    text-decoration: none;
-
-    .card-link { color: $primary-dark; }
-  }
-}
-
-.feature-card-header {
-  height: 140px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.services-header { background: linear-gradient(135deg, #dbeafe, #bfdbfe); }
-.products-header { background: linear-gradient(135deg, #d1fae5, #a7f3d0); }
-.tools-header { background: linear-gradient(135deg, #fef3c7, #fde68a); }
-
-.feature-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.feature-card-body {
-  padding: 1.5rem;
-
-  h3 {
-    font-size: 1.25rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-  }
-
-  p {
-    color: $text-secondary;
-    font-size: 0.95rem;
-    margin-bottom: 1rem;
-    line-height: 1.6;
-  }
-}
-
-.card-link {
-  color: $primary;
-  font-weight: 600;
-  font-size: 0.9rem;
-}
-
-// News Cards
-.news-card {
-  display: block;
-  background: $white;
-  border: 1px solid $border;
-  border-radius: 12px;
-  padding: 1.5rem;
-  text-decoration: none;
-  color: $text;
-  transition: box-shadow 0.2s, transform 0.2s;
-
-  &:hover {
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
-    transform: translateY(-2px);
-    text-decoration: none;
-  }
-
-  h3 {
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-    line-height: 1.4;
-  }
-
-  p {
-    color: $text-secondary;
-    font-size: 0.9rem;
-    margin-bottom: 0.75rem;
-    line-height: 1.5;
-  }
-}
-
-.news-date {
-  display: block;
-  font-size: 0.8rem;
-  color: $text-secondary;
-  margin-bottom: 0.5rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-// CTA Section
-.cta-section {
-  background: linear-gradient(135deg, #1e3a5f 0%, #1a56db 100%);
-  color: $white;
-
-  h2 { color: $white; }
-
-  .section-subtitle {
-    color: rgba(255, 255, 255, 0.8);
-  }
-
-  .btn-primary {
-    background: $white;
-    color: $primary;
-
-    &:hover { background: darken($white, 5%); }
   }
 }
 
