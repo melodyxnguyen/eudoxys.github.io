@@ -4,8 +4,11 @@ title: Welcome
 permalink: /
 ---
 
-<!-- Full-screen hero -->
+<!-- Full-screen hero with video background -->
 <section class="hero">
+  <video class="hero-video" autoplay muted loop playsinline poster="/images/washington.jpg">
+    <!-- Add your video: <source src="/videos/hero.mp4" type="video/mp4"> -->
+  </video>
   <div class="hero-overlay"></div>
   <div class="hero-content">
     <span class="hero-label">Energy Consulting</span>
@@ -23,85 +26,92 @@ permalink: /
   </div>
 </div>
 
-<!-- Sticky scroll service pairs -->
-<div class="services-list" id="services">
-
-  <!-- Pair 1: Modeling + Simulations — image sticks LEFT -->
-  <div class="sticky-pair">
-    <div class="sticky-col">
-      <div class="sticky-img">
-        <img src="/images/placeholder-modeling.svg" alt="Modeling and Simulations">
-      </div>
-    </div>
-    <div class="scroll-col">
-      <div class="scroll-block">
-        <div class="scroll-block-inner">
-          <h2>Modeling</h2>
-          <p>We develop high-fidelity static, quasi-steady, and dynamic load models for GridLAB-D, CYME, PSLF, and PSS/E — built from physics-based models, end-use surveys, and measured power data.</p>
-          <a href="/services/" class="btn-learn">Learn More</a>
-        </div>
-      </div>
-      <div class="scroll-block">
-        <div class="scroll-block-inner">
-          <h2>Simulations</h2>
-          <p>We prepare and validate GridLAB-D transmission and distribution simulations of all sizes, run on optimized AWS infrastructure and validated against AMI and SCADA data.</p>
-          <a href="/services/" class="btn-learn">Learn More</a>
-        </div>
-      </div>
+<!-- Horizontal swipe services -->
+<section class="swipe-section" id="services">
+  <div class="swipe-header">
+    <h2>Our Services</h2>
+    <div class="swipe-nav">
+      <button class="swipe-btn" id="svc-prev" aria-label="Previous">&#8592;</button>
+      <button class="swipe-btn" id="svc-next" aria-label="Next">&#8594;</button>
     </div>
   </div>
 
-  <!-- Pair 2: Analysis + Forecasting — image sticks RIGHT -->
-  <div class="sticky-pair sticky-pair--reverse">
-    <div class="scroll-col">
-      <div class="scroll-block">
-        <div class="scroll-block-inner">
-          <h2>Analysis</h2>
-          <p>We conduct reliability and resilience analysis including IEEE 1366 metrics, electrification impact studies, conservation voltage reduction, and distribution-level optimal power flow.</p>
-          <a href="/services/" class="btn-learn">Learn More</a>
-        </div>
-      </div>
-      <div class="scroll-block">
-        <div class="scroll-block-inner">
-          <h2>Forecasting</h2>
-          <p>We develop short-term (1 hour to 1 week) and long-term (5–20 year) load forecasts for all major electric customer sectors from local to national scale.</p>
-          <a href="/services/" class="btn-learn">Learn More</a>
-        </div>
-      </div>
-    </div>
-    <div class="sticky-col">
-      <div class="sticky-img">
-        <img src="/images/placeholder-analysis.svg" alt="Analysis and Forecasting">
-      </div>
-    </div>
-  </div>
+  <div class="swipe-track" id="svc-track">
 
-  <!-- Pair 3: Controls + Training — image sticks LEFT -->
-  <div class="sticky-pair">
-    <div class="sticky-col">
-      <div class="sticky-img">
-        <img src="/images/placeholder-controls.svg" alt="Controls and Training">
+    <div class="swipe-card">
+      <div class="swipe-card-img">
+        <img src="/images/placeholder-modeling.svg" alt="Modeling">
+      </div>
+      <div class="swipe-card-body">
+        <span class="swipe-num">01</span>
+        <h3>Modeling</h3>
+        <p>We develop high-fidelity static, quasi-steady, and dynamic load models for GridLAB-D, CYME, PSLF, and PSS/E — built from physics-based models, end-use surveys, and measured power data.</p>
+        <a href="/services/" class="btn-learn">Learn More</a>
       </div>
     </div>
-    <div class="scroll-col">
-      <div class="scroll-block">
-        <div class="scroll-block-inner">
-          <h2>Controls</h2>
-          <p>We develop and validate advanced load and distributed resource control strategies, with a focus on transactive energy solutions that use price signals to optimally dispatch distributed resources.</p>
-          <a href="/services/" class="btn-learn">Learn More</a>
-        </div>
-      </div>
-      <div class="scroll-block">
-        <div class="scroll-block-inner">
-          <h2>Training</h2>
-          <p>We provide two-hour training courses for utility engineers, academic faculty, and regulatory staff covering GridLAB-D modeling, simulation, Python APIs, and LF Energy tools.</p>
-          <a href="/services/" class="btn-learn">Learn More</a>
-        </div>
-      </div>
-    </div>
-  </div>
 
-</div>
+    <div class="swipe-card">
+      <div class="swipe-card-img">
+        <img src="/images/placeholder-simulations.svg" alt="Simulations">
+      </div>
+      <div class="swipe-card-body">
+        <span class="swipe-num">02</span>
+        <h3>Simulations</h3>
+        <p>We prepare and validate GridLAB-D transmission and distribution simulations of all sizes, run on optimized AWS infrastructure and validated against AMI and SCADA data.</p>
+        <a href="/services/" class="btn-learn">Learn More</a>
+      </div>
+    </div>
+
+    <div class="swipe-card">
+      <div class="swipe-card-img">
+        <img src="/images/placeholder-analysis.svg" alt="Analysis">
+      </div>
+      <div class="swipe-card-body">
+        <span class="swipe-num">03</span>
+        <h3>Analysis</h3>
+        <p>We conduct reliability and resilience analysis including IEEE 1366 metrics, electrification impact studies, conservation voltage reduction, and distribution-level optimal power flow.</p>
+        <a href="/services/" class="btn-learn">Learn More</a>
+      </div>
+    </div>
+
+    <div class="swipe-card">
+      <div class="swipe-card-img">
+        <img src="/images/placeholder-forecasting.svg" alt="Forecasting">
+      </div>
+      <div class="swipe-card-body">
+        <span class="swipe-num">04</span>
+        <h3>Forecasting</h3>
+        <p>We develop short-term (1 hour to 1 week) and long-term (5–20 year) load forecasts for all major electric customer sectors from local to national scale.</p>
+        <a href="/services/" class="btn-learn">Learn More</a>
+      </div>
+    </div>
+
+    <div class="swipe-card">
+      <div class="swipe-card-img">
+        <img src="/images/placeholder-controls.svg" alt="Controls">
+      </div>
+      <div class="swipe-card-body">
+        <span class="swipe-num">05</span>
+        <h3>Controls</h3>
+        <p>We develop and validate advanced load and distributed resource control strategies, with a focus on transactive energy solutions that use price signals to optimally dispatch distributed resources.</p>
+        <a href="/services/" class="btn-learn">Learn More</a>
+      </div>
+    </div>
+
+    <div class="swipe-card">
+      <div class="swipe-card-img">
+        <img src="/images/placeholder-training.svg" alt="Training">
+      </div>
+      <div class="swipe-card-body">
+        <span class="swipe-num">06</span>
+        <h3>Training</h3>
+        <p>We provide two-hour training courses for utility engineers, academic faculty, and regulatory staff covering GridLAB-D modeling, simulation, Python APIs, and LF Energy tools.</p>
+        <a href="/services/" class="btn-learn">Learn More</a>
+      </div>
+    </div>
+
+  </div>
+</section>
 
 <!-- News slideshow -->
 <section class="news-section">
@@ -170,14 +180,12 @@ permalink: /
   </div>
 </section>
 
-
 <script>
 // News slideshow
 (function() {
   var slides = document.querySelectorAll('#news-slideshow .slide');
   var dots = document.querySelectorAll('#news-slideshow .ss-dot');
   var current = 0;
-
   function show(n) {
     slides[current].classList.remove('active');
     dots[current].classList.remove('active');
@@ -185,18 +193,14 @@ permalink: /
     slides[current].classList.add('active');
     dots[current].classList.add('active');
   }
-
   slides[0].classList.add('active');
-
   document.querySelector('#news-slideshow .ss-prev').addEventListener('click', function() { show(current - 1); });
   document.querySelector('#news-slideshow .ss-next').addEventListener('click', function() { show(current + 1); });
   dots.forEach(function(dot, i) { dot.addEventListener('click', function() { show(i); }); });
-
-  // Auto-advance every 5 seconds
   setInterval(function() { show(current + 1); }, 5000);
 })();
 
-// Tools carousel — 3 visible at a time, auto-advances
+// Tools carousel
 (function() {
   var track = document.querySelector('#tools-carousel .carousel-track');
   var cards = track.querySelectorAll('.carousel-card');
@@ -206,8 +210,6 @@ permalink: /
   var pages = Math.ceil(total / visible);
   var page = 0;
   var timer;
-
-  // Build dots
   for (var i = 0; i < pages; i++) {
     var d = document.createElement('button');
     d.className = 'cr-dot' + (i === 0 ? ' active' : '');
@@ -215,20 +217,47 @@ permalink: /
     dotsContainer.appendChild(d);
   }
   var dots = dotsContainer.querySelectorAll('.cr-dot');
-
   function goTo(n) {
     page = (n + pages) % pages;
     track.style.transform = 'translateX(-' + (page * 100) + '%)';
     dots.forEach(function(d, i) { d.classList.toggle('active', i === page); });
   }
-
   function startTimer() { timer = setInterval(function() { goTo(page + 1); }, 4000); }
   function resetTimer() { clearInterval(timer); startTimer(); }
-
   document.querySelector('#tools-carousel .cr-prev').addEventListener('click', function() { goTo(page - 1); resetTimer(); });
   document.querySelector('#tools-carousel .cr-next').addEventListener('click', function() { goTo(page + 1); resetTimer(); });
   dots.forEach(function(d, i) { d.addEventListener('click', function() { goTo(i); resetTimer(); }); });
-
   startTimer();
+})();
+
+// Services swipe — drag to scroll on desktop
+(function() {
+  var track = document.getElementById('svc-track');
+  if (!track) return;
+
+  // Prev/next buttons
+  document.getElementById('svc-prev').addEventListener('click', function() {
+    track.scrollBy({ left: -track.offsetWidth * 0.82, behavior: 'smooth' });
+  });
+  document.getElementById('svc-next').addEventListener('click', function() {
+    track.scrollBy({ left: track.offsetWidth * 0.82, behavior: 'smooth' });
+  });
+
+  // Mouse drag
+  var isDown = false, startX, scrollLeft;
+  track.addEventListener('mousedown', function(e) {
+    isDown = true;
+    track.classList.add('dragging');
+    startX = e.pageX - track.offsetLeft;
+    scrollLeft = track.scrollLeft;
+  });
+  track.addEventListener('mouseleave', function() { isDown = false; track.classList.remove('dragging'); });
+  track.addEventListener('mouseup', function() { isDown = false; track.classList.remove('dragging'); });
+  track.addEventListener('mousemove', function(e) {
+    if (!isDown) return;
+    e.preventDefault();
+    var x = e.pageX - track.offsetLeft;
+    track.scrollLeft = scrollLeft - (x - startX) * 1.5;
+  });
 })();
 </script>

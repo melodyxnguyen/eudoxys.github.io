@@ -174,7 +174,7 @@ img { max-width: 100%; height: auto; }
   }
 }
 
-// Hero — full viewport with background image
+// Hero — full viewport with video/image background
 .hero {
   position: relative;
   height: 100vh;
@@ -182,14 +182,22 @@ img { max-width: 100%; height: auto; }
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url('/images/washington.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  background-color: #111;
+  overflow: hidden;
 
   @include mobile {
     min-height: 480px;
   }
+}
+
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  // Falls back to poster (washington.jpg) when no <source> is provided
 }
 
 .hero-overlay {
@@ -692,95 +700,141 @@ img { max-width: 100%; height: auto; }
   }
 }
 
-// Sticky scroll service pairs
-.services-list {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 2rem;
-
-  @include mobile {
-    padding: 0 1.5rem;
-  }
+// Horizontal swipe services
+.swipe-section {
+  padding: 5rem 0 4rem;
+  background: $bg;
+  overflow: hidden;
 }
 
-.sticky-pair {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 5rem;
-  align-items: start;
-  border-bottom: 1px solid $border;
-
-  &:last-child { border-bottom: none; }
-
-  @include mobile {
-    grid-template-columns: 1fr;
-    gap: 0;
-  }
-}
-
-.sticky-col {
-  position: sticky;
-  top: 64px;
-  height: calc(100vh - 64px);
+.swipe-header {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  border-bottom: 1px solid $border;
+  margin-bottom: 2.5rem;
 
-  @include mobile {
-    position: static;
-    height: auto;
-    padding: 2rem 0 0;
+  h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
   }
 }
 
-.sticky-img {
-  width: 100%;
-  border-radius: 10px;
+.swipe-nav {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.swipe-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1.5px solid $border;
+  background: $white;
+  color: $text;
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.2s, background 0.2s;
+
+  &:hover {
+    border-color: $text;
+    background: $bg-alt;
+  }
+}
+
+.swipe-track {
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding: 0.5rem 2rem 2rem;
+  cursor: grab;
+
+  &.dragging { cursor: grabbing; }
+  &::-webkit-scrollbar { display: none; }
+}
+
+.swipe-card {
+  scroll-snap-align: start;
+  flex: 0 0 calc(80% - 1.5rem);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 1px solid $border;
+  border-radius: 14px;
   overflow: hidden;
-  aspect-ratio: 4 / 3;
+  background: $white;
+  transition: box-shadow 0.25s;
+  user-select: none;
+
+  &:hover {
+    box-shadow: 0 8px 40px rgba(0,0,0,0.09);
+  }
+
+  @include mobile {
+    flex: 0 0 88%;
+    grid-template-columns: 1fr;
+  }
+}
+
+.swipe-card-img {
   background: $bg-alt;
+  overflow: hidden;
 
   img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
+    pointer-events: none;
   }
 }
 
-.scroll-col {
-  // natural flow — text scrolls while image stays fixed
-}
-
-.scroll-block {
-  min-height: 100vh;
+.swipe-card-body {
+  padding: 3rem 2.5rem;
   display: flex;
-  align-items: center;
-  border-bottom: 1px solid $border;
-
-  &:last-child { border-bottom: none; }
+  flex-direction: column;
+  justify-content: center;
 
   @include mobile {
-    min-height: auto;
-    padding: 3rem 0;
+    padding: 2rem 1.5rem;
   }
 }
 
-.scroll-block-inner {
-  padding: 2rem 0;
+.swipe-num {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: $text-secondary;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  margin-bottom: 1rem;
+  display: block;
+}
 
-  h2 {
-    font-size: 1.75rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-    letter-spacing: -0.01em;
-  }
+.swipe-card-body h3 {
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin-bottom: 1rem;
 
-  p {
-    font-size: 1rem;
-    color: $text-secondary;
-    line-height: 1.75;
-    margin-bottom: 1.75rem;
-  }
+  @include mobile { font-size: 1.5rem; }
+}
+
+.swipe-card-body p {
+  font-size: 0.98rem;
+  color: $text-secondary;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+  flex: 1;
 }
 
 .btn-learn {
@@ -985,6 +1039,124 @@ img { max-width: 100%; height: auto; }
   }
 }
 
+// Products page
+.products-page {
+  background: linear-gradient(160deg, #f5f0eb 0%, #ede8e2 40%, #e8e3dc 100%);
+  min-height: 100vh;
+  padding-bottom: 6rem;
+}
+
+.products-header {
+  text-align: center;
+  padding: 6rem 2rem 4rem;
+
+  h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    color: $text;
+    margin-bottom: 1rem;
+
+    @include mobile {
+      font-size: 2.25rem;
+    }
+  }
+
+  p {
+    font-size: 1.05rem;
+    color: $text-secondary;
+  }
+
+  @include mobile {
+    padding: 3.5rem 1.5rem 2.5rem;
+  }
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2rem;
+
+  @include mobile {
+    grid-template-columns: 1fr;
+  }
+}
+
+.product-card {
+  background: #111;
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+  }
+}
+
+.product-media {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  background: #1e1e1e;
+  overflow: hidden;
+
+  img, video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+
+  .product-card:hover & img,
+  .product-card:hover & video {
+    transform: scale(1.03);
+  }
+}
+
+.product-body {
+  padding: 2rem 2rem 2.25rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+
+  h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: $white;
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+  }
+
+  p {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.65;
+    flex: 1;
+    margin-bottom: 1.5rem;
+  }
+}
+
+.product-link {
+  font-size: 1rem;
+  font-weight: 700;
+  color: $white;
+  text-decoration: none;
+  letter-spacing: -0.01em;
+  transition: opacity 0.2s;
+
+  &:hover {
+    opacity: 0.7;
+    text-decoration: none;
+  }
+}
+
 // News page
 .news-page-header {
   padding: 4rem 3rem 2rem;
@@ -1013,6 +1185,7 @@ img { max-width: 100%; height: auto; }
   grid-template-columns: 1fr 1fr;
   max-width: 1200px;
   margin: 0 auto;
+  padding: 0 2rem;
   border-bottom: 1px solid $border;
   text-decoration: none;
   color: $text;
@@ -1100,6 +1273,7 @@ img { max-width: 100%; height: auto; }
   grid-template-columns: repeat(3, 1fr);
   max-width: 1200px;
   margin: 0 auto;
+  padding: 0 2rem;
   border-bottom: 1px solid $border;
 
   @include mobile {
@@ -1256,26 +1430,246 @@ img { max-width: 100%; height: auto; }
   }
 }
 
-// Post list (for category pages)
-.post-list {
-  list-style: none;
-  padding: 0;
-}
+// Bento grid with image frames (Services, Tools)
+.bento-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 2rem 2.5rem;
 
-.post-list-item {
-  border: 1px solid $border;
-  border-radius: 12px;
-  padding: 1.5rem;
-  margin-bottom: 1rem;
-  transition: box-shadow 0.2s;
-
-  &:hover {
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    color: $text;
+    max-width: 520px;
   }
 
+  p {
+    color: $text-secondary;
+    font-size: 1.05rem;
+    max-width: 380px;
+    line-height: 1.6;
+  }
+
+  @include mobile {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 2.5rem 1.5rem 1.5rem;
+
+    h1 { font-size: 2rem; }
+  }
+}
+
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  max-width: 1200px;
+  margin: 0 auto 2rem;
+  padding: 0 2rem;
+
+  @include mobile {
+    padding: 0 1.5rem;
+  }
+}
+
+.filter-btn {
+  padding: 0.5rem 1.25rem;
+  border-radius: 999px;
+  border: 1.5px solid $border;
+  background: $white;
+  color: $text-secondary;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s, color 0.2s;
+
+  &:hover {
+    border-color: $text;
+    color: $text;
+  }
+
+  &.active {
+    background: $text;
+    color: $white;
+    border-color: $text;
+  }
+}
+
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto 5rem;
+  padding: 0 2rem;
+
+  @include mobile {
+    grid-template-columns: 1fr;
+    margin: 0 auto 2.5rem;
+    padding: 0 1.5rem;
+  }
+}
+
+.bento-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 420px;
+  background: #111;
+  border-radius: 20px;
+  overflow: hidden;
+  text-decoration: none;
+  color: $white;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+    text-decoration: none;
+  }
+
+  &.hidden {
+    display: none;
+  }
+}
+
+.bento-card-text {
+  padding: 2rem 2rem 1rem;
+
   h2 {
-    font-size: 1.2rem;
-    margin-bottom: 0.25rem;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: $white;
+    line-height: 1.3;
+    margin: 0.5rem 0 0.6rem;
+  }
+
+  p {
+    font-size: 0.92rem;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.6;
+  }
+}
+
+.bento-card-date {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.bento-card-media {
+  flex: 1;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+
+  .bento-card:hover & img {
+    transform: scale(1.05);
+  }
+}
+
+.bento-arrow {
+  position: absolute;
+  bottom: 1.25rem;
+  right: 1.25rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $white;
+  font-size: 1.1rem;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.3s ease;
+
+  .bento-card:hover & {
+    background: $white;
+    color: #111;
+    transform: rotate(-45deg);
+  }
+}
+
+// Spotlight (stacked single-item showcase, e.g. Services)
+.spotlight {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 2rem 5rem;
+
+  @include mobile {
+    padding: 0 1.5rem 3rem;
+  }
+}
+
+.spotlight-slide {
+  margin-bottom: 7rem;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+
+  &.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  @include mobile {
+    margin-bottom: 4rem;
+  }
+}
+
+.spotlight-media {
+  display: block;
+  aspect-ratio: 16 / 7;
+  border-radius: 20px;
+  overflow: hidden;
+  background: $bg-alt;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+
+  &:hover img {
+    transform: scale(1.02);
+  }
+
+  @include mobile {
+    aspect-ratio: 4 / 3;
+  }
+}
+
+.spotlight-info {
+  padding: 2rem 0 0;
+  max-width: 700px;
+
+  h2 {
+    font-size: 1.85rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    margin: 0.5rem 0 1rem;
 
     a {
       color: $text;
@@ -1283,17 +1677,24 @@ img { max-width: 100%; height: auto; }
     }
   }
 
-  .post-date {
-    font-size: 0.85rem;
+  p {
     color: $text-secondary;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
   }
 
-  .post-excerpt {
-    color: $text-secondary;
-    font-size: 0.95rem;
-    margin-top: 0.5rem;
-    line-height: 1.5;
+  @include mobile {
+    h2 { font-size: 1.4rem; }
   }
+}
+
+.spotlight-date {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: $text-secondary;
 }
 
 // Post single

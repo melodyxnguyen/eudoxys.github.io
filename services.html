@@ -3,21 +3,48 @@ layout: default
 title: Services
 ---
 
-<div class="page-header">
+<div class="bento-header">
   <h1>Eudoxys&#8480; Services</h1>
   <p>Consulting engagements for grid modeling, simulation, analysis, forecasting, and training.</p>
 </div>
 
-<div class="page-content">
-  <ul class="post-list">
-    {% for post in site.posts %}
-      {% if post.category == "Services" %}
-      <li class="post-list-item">
-        <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
-        <span class="post-date">{{ post.date | date: "%B %d, %Y" }}</span>
-        <p class="post-excerpt">{{ post.excerpt | strip_html | truncate: 200 }}</p>
-      </li>
+<section class="spotlight" id="services-spotlight">
+  {% assign service_posts = site.posts | where: "category", "Services" %}
+  {% for post in service_posts %}
+  <div class="spotlight-slide">
+    <a href="{{ post.url }}" class="spotlight-media">
+      {% if post.image %}
+        <img src="{{ post.image }}" alt="{{ post.title }}">
+      {% else %}
+        <img src="/images/placeholder-services.svg" alt="{{ post.title }}">
       {% endif %}
-    {% endfor %}
-  </ul>
-</div>
+    </a>
+    <div class="spotlight-info">
+      <span class="spotlight-date">{{ post.date | date: "%B %d, %Y" }}</span>
+      <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
+      <p>{{ post.excerpt | strip_html | truncate: 220 }}</p>
+      <a href="{{ post.url }}" class="btn-learn">Learn More</a>
+    </div>
+  </div>
+  {% endfor %}
+</section>
+
+<script>
+(function() {
+  var slides = document.querySelectorAll('#services-spotlight .spotlight-slide');
+  if (!slides.length) return;
+  if (!('IntersectionObserver' in window)) {
+    slides.forEach(function(s) { s.classList.add('in-view'); });
+    return;
+  }
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+  slides.forEach(function(slide) { observer.observe(slide); });
+})();
+</script>

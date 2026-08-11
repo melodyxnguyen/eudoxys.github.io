@@ -3,21 +3,36 @@ layout: default
 title: Products
 ---
 
-<div class="page-header">
-  <h1>Eudoxys&#8480; Products</h1>
-  <p>Software products for power system modeling, simulation, and data analysis.</p>
-</div>
+<div class="products-page">
 
-<div class="page-content">
-  <ul class="post-list">
-    {% for post in site.posts %}
-      {% if post.category == "Products" %}
-      <li class="post-list-item">
-        <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
-        <span class="post-date">{{ post.date | date: "%B %d, %Y" }}</span>
-        <p class="post-excerpt">{{ post.excerpt | strip_html | truncate: 200 }}</p>
-      </li>
-      {% endif %}
+  <div class="products-header">
+    <h1>Our Products</h1>
+    <p>Software and research tools for the electric power industry</p>
+  </div>
+
+  <div class="products-grid">
+    {% assign product_posts = site.posts | where: "category", "Products" %}
+    {% for post in product_posts %}
+    <div class="product-card">
+
+      <div class="product-media">
+        {% if post.video %}
+          <video src="{{ post.video }}" autoplay muted loop playsinline></video>
+        {% elsif post.image %}
+          <img src="{{ post.image }}" alt="{{ post.title }}">
+        {% else %}
+          <img src="/images/placeholder-products.svg" alt="{{ post.title }}">
+        {% endif %}
+      </div>
+
+      <div class="product-body">
+        <h2>{{ post.title }}</h2>
+        <p>{{ post.excerpt | strip_html | truncate: 180 }}</p>
+        <a href="{{ post.url }}" class="product-link">Learn More &rarr;</a>
+      </div>
+
+    </div>
     {% endfor %}
-  </ul>
+  </div>
+
 </div>

@@ -3,6 +3,7 @@ layout: post
 title: Arras Energy training
 category: Services
 tags: [Services]
+image: /images/placeholder-training.svg
 ---
 
 _Eudoxys Sciences announces Arras Energy training program_.

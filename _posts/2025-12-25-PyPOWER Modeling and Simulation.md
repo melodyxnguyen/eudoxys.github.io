@@ -3,6 +3,7 @@ layout: post
 title: PyPOWER Modeling and Simulation
 category: Services
 tags: [Services]
+image: /images/placeholder-modeling.svg
 ---
 
 _Eudoxys Sciences announces PyPOWER system modeling services_.

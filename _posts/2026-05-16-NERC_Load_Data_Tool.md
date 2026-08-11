@@ -2,7 +2,9 @@
 layout: post
 title: NERC Load Data Tool
 category: Tools
+subcategory: Data
 tags: [Tools]
+image: /images/placeholder-nerc-load.svg
 ---
 
 _Eudoxys Sciences release NERC Load Data Tool Marimo notebook_.
