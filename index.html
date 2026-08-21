@@ -7,7 +7,7 @@ permalink: /
 <!-- Full-screen hero with video background -->
 <section class="hero">
   <video class="hero-video" autoplay muted loop playsinline poster="/images/washington.jpg">
-    <!-- Add your video: <source src="/videos/hero.mp4" type="video/mp4"> -->
+    <source src="/images/ocean.mp4" type="video/mp4">
   </video>
   <div class="hero-overlay"></div>
   <div class="hero-content">
@@ -40,7 +40,7 @@ permalink: /
 
     <div class="swipe-card">
       <div class="swipe-card-img">
-        <img src="/images/placeholder-modeling.svg" alt="Modeling">
+        <img src="/images/riverviens.jpg" alt="Modeling">
       </div>
       <div class="swipe-card-body">
         <span class="swipe-num">01</span>
@@ -52,7 +52,7 @@ permalink: /
 
     <div class="swipe-card">
       <div class="swipe-card-img">
-        <img src="/images/placeholder-simulations.svg" alt="Simulations">
+        <img src="/images/grass.jpg" alt="Simulations">
       </div>
       <div class="swipe-card-body">
         <span class="swipe-num">02</span>
@@ -64,7 +64,7 @@ permalink: /
 
     <div class="swipe-card">
       <div class="swipe-card-img">
-        <img src="/images/placeholder-analysis.svg" alt="Analysis">
+        <img src="/images/cracks.jpg" alt="Analysis">
       </div>
       <div class="swipe-card-body">
         <span class="swipe-num">03</span>
@@ -76,7 +76,7 @@ permalink: /
 
     <div class="swipe-card">
       <div class="swipe-card-img">
-        <img src="/images/placeholder-forecasting.svg" alt="Forecasting">
+        <img src="/images/sunred.jpg" alt="Forecasting">
       </div>
       <div class="swipe-card-body">
         <span class="swipe-num">04</span>
@@ -88,7 +88,7 @@ permalink: /
 
     <div class="swipe-card">
       <div class="swipe-card-img">
-        <img src="/images/placeholder-controls.svg" alt="Controls">
+        <img src="/images/v.jpg" alt="Controls">
       </div>
       <div class="swipe-card-body">
         <span class="swipe-num">05</span>
@@ -100,7 +100,7 @@ permalink: /
 
     <div class="swipe-card">
       <div class="swipe-card-img">
-        <img src="/images/placeholder-training.svg" alt="Training">
+        <img src="/images/trail.jpg" alt="Training">
       </div>
       <div class="swipe-card-body">
         <span class="swipe-num">06</span>
@@ -126,7 +126,7 @@ permalink: /
       {% for post in news_posts %}
       <div class="slide">
         <div class="slide-img">
-          <img src="/images/placeholder-publications.svg" alt="{{ post.title }}">
+          <img src="{{ post.image | default: '/images/placeholder-publications.svg' }}" alt="{{ post.title }}">
         </div>
         <div class="slide-body">
           <span class="slide-date">{{ post.date | date: "%B %Y" }}</span>
