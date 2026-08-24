@@ -4,7 +4,7 @@ title: NERC Load Data Tool
 category: Tools
 subcategory: Data
 tags: [Tools]
-image: /images/placeholder-nerc-load.svg
+image: /images/turbinegrey.jpg
 ---
 
 _Eudoxys Sciences release NERC Load Data Tool Marimo notebook_.

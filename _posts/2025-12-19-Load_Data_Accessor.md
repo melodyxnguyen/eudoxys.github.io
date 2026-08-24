@@ -4,7 +4,7 @@ title: Load Data Accessor
 category: Tools
 subcategory: Data
 tags: [Tools]
-image: /images/placeholder-load-data.svg
+image: /images/simple.jpg
 ---
 
 _Eudoxys Sciences releases `loads` developer tools to access US state and county electric load data_.

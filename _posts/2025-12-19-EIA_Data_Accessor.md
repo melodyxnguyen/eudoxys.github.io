@@ -4,7 +4,7 @@ title: EIA Data Accessor
 category: Tools
 subcategory: Data
 tags: [Tools]
-image: /images/placeholder-eia-data.svg
+image: /images/feilds.jpg
 ---
 
 _Eudoxys Sciences releases `eia` developer tool to access EIA Form 860 and 861 data_.

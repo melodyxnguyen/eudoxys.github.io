@@ -4,7 +4,7 @@ title: FIPS Data Accessor
 category: Tools
 subcategory: Data
 tags: [Tools]
-image: /images/placeholder-fips-data.svg
+image: /images/census.jpg
 ---
 
 _Eudoxys Sciences releases `fips` developer tool to access US Census Bureau FIPS data_.

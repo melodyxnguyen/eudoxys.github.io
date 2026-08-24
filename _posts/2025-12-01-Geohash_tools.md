@@ -4,7 +4,7 @@ title: Geohash tools
 category: Tools
 subcategory: Geospatial
 tags: [Tools]
-image: /images/placeholder-geohash.svg
+image: /images/port.jpg
 ---
 
 _Eudoxys Sciences releases `geohash` developer tool to index utility assets using geographic hash codes_.
